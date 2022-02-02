@@ -49,15 +49,11 @@
         }
 
         public function login($name,$psw){
-            $sql = "SELECT * FROM products WHERE name=$name AND password=$psw";
+            $sql = "SELECT * FROM users WHERE names='$name' AND passwords='$psw'";
             $stmt=$this->conn->prepare($sql);
             $stmt->execute();
             $result = $stmt->fetchAll();
-            if($result){
-                header("location:admin.php");
-            }else{
-                return false;
-            }
+            
             return $result;
         }
     }
